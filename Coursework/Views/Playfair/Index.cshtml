@@ -1,0 +1,39 @@
+﻿@model Coursework.Models.Playfair
+
+@{
+    ViewData["Title"] = "Шифр Плейфера";
+}
+
+<h2>Шифр Плейфера (русский и английский)</h2>
+
+<form asp-action="Index" method="post">
+    <div>
+        <label>Выберите язык:</label>
+        <select name="language">
+            <option value="en">Английский</option>
+            <option value="ru">Русский</option>
+        </select>
+    </div>
+    <br />
+    <div>
+        <label>Введите текст:</label>
+        <input asp-for="InputText" class="form-control" placeholder="Введите текст для шифрования" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Зашифровать / Расшифровать</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.EncryptedText))
+{
+    <div class="mt-4">
+        <h4>Результат:</h4>
+        <p><strong>Зашифрованный текст:</strong> @Model.EncryptedText</p>
+        <p><strong>Расшифрованный текст:</strong> @Model.DecryptedText</p>
+    </div>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
