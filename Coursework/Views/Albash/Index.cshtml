@@ -1,0 +1,31 @@
+﻿@model Coursework.Models.Albash
+
+<h2>Шифр Альбаш</h2>
+
+<form asp-controller="Albash" asp-action="Index" method="post">
+    <div>
+        <label asp-for="InputText">Текст:</label>
+        <input asp-for="InputText" class="form-control" />
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" name="action" value="encrypt" class="btn btn-primary">Шифровать</button>
+        <button type="submit" name="action" value="decrypt" class="btn btn-secondary">Дешифровать</button>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model?.EncryptedText))
+    {
+        <div class="mt-3">
+            <label>Зашифрованный текст:</label>
+            <textarea class="form-control" rows="3" readonly>@Model.EncryptedText</textarea>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model?.DecryptedText))
+    {
+        <div class="mt-3">
+            <label>Расшифрованный текст:</label>
+            <textarea class="form-control" rows="3" readonly>@Model.DecryptedText</textarea>
+        </div>
+    }
+</form>
