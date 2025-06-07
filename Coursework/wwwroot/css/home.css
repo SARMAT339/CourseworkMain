@@ -44,3 +44,97 @@ hr {
     .select-button:hover {
         background-color: #45a049;
     }
+/* Основные настройки */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Контейнер с кнопками */
+.cipher-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.cipher-option {
+    width: calc(33% - 20px); /* 3 в ряд */
+    min-width: 200px;
+}
+
+.button {
+    display: block;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+/* Кнопка "Выбрать" */
+.select-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .select-button:hover {
+        background-color: #218838;
+    }
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .cipher-option {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .cipher-option {
+        width: 100%;
+    }
+
+    .button {
+        font-size: 1rem;
+    }
+}

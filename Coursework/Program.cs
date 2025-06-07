@@ -1,20 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Добавление MVC
 builder.Services.AddControllersWithViews();
 
-// Добавь эту строку, если используешь PlayfairService
+// Регистрация сервисов
 builder.Services.AddSingleton<PlayfairCipherApp.Services.PlayfairService>();
+builder.Services.AddSingleton<Coursework.Services.XorService>();
 
-// Если будешь использовать сессии
+// Поддержка сессий
 builder.Services.AddSession(options =>
 {
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
 
-// Если будешь использовать куки или авторизацию
-builder.Services.AddHttpContextAccessor(); // Полезно для работы с HttpContext
+// HttpContextAccessor (если используется)
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -22,19 +23,14 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts. 
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseSession(); // до UseAuthorization
 app.UseAuthorization();
-
-// Добавлено: поддержка сессий
-app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

@@ -1,0 +1,36 @@
+﻿@model Coursework.Models.Xor
+
+@{
+    ViewData["Title"] = "Шифр XOR";
+}
+
+<h2>Шифрование и дешифрование с помощью XOR</h2>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label>Введите текст:</label>
+        <input asp-for="InputText" class="form-control" placeholder="Введите текст для шифрования" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Введите ключ:</label>
+        <input asp-for="Key" class="form-control" placeholder="Введите ключ" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Зашифровать / Расшифровать</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.EncryptedText))
+{
+    <div class="mt-4">
+        <h4>Результат:</h4>
+        <p><strong>Зашифрованный текст (Base64):</strong> @Model.EncryptedText</p>
+        <p><strong>Расшифрованный текст:</strong> @Model.DecryptedText</p>
+    </div>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

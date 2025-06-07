@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null; // Отключаем лейаут, если не используем его
+}
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -7,20 +11,34 @@
     <link rel="stylesheet" href="~/css/home.css" />
 </head>
 <body>
-    <h1>Шифровка и дешифровка</h1>
 
-    <p>Выберите шифр</p>
+    <h1>Шифровка и дешифровка</h1>
+    <p class="text-center">Выберите шифр</p>
 
     <div class="cipher-options">
-        <div class="cipher-option"><a asp-controller="CaesarCipher" asp-action="Index" class="button">Caesar</a></div>
-        <div class="cipher-option"><a asp-controller="Aes" asp-action="Index" class="button">AES</a></div>
-        <div class="cipher-option"><a asp-controller="Rsa" asp-action="Index" class="button">RSA</a></div>
-        <div class="cipher-option"><a asp-controller="Albash" asp-action="Index" class="button">Albash</a></div>
-        <div class="cipher-option"><a asp-controller="Playfair" asp-action="Index" class="button">Playfair</a></div>
+        <div class="cipher-option">
+            <a asp-controller="CaesarCipher" asp-action="Index" class="button">Цезарь</a>
+        </div>
+        <div class="cipher-option">
+            <a asp-controller="Aes" asp-action="Index" class="button">AES</a>
+        </div>
+        <div class="cipher-option">
+            <a asp-controller="Rsa" asp-action="Index" class="button">RSA</a>
+        </div>
+        <div class="cipher-option">
+            <a asp-controller="Albash" asp-action="Index" class="button">Альбаш</a>
+        </div>
+        <div class="cipher-option">
+            <a asp-controller="Playfair" asp-action="Index" class="button">Плейфер</a>
+        </div>
+        <div class="cipher-option">
+            <a asp-controller="Xor" asp-action="Index" class="button">XOR</a>
+        </div>
     </div>
 
-    <hr>
+    <hr />
 
     <button class="select-button">Выбрать</button>
+
 </body>
 </html>
